@@ -9,4 +9,5 @@ class Index {
 
 
 const index = new Index;
+console.log('running...');
 index.services();
