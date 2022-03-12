@@ -57,7 +57,7 @@ class WhatsAppSendMessage {
     this.client.on("ready", async () => {
      await this.client.getChats().then(async(chats) => {
         const group = chats.find(
-          (chat) => chat.id.user === "5511998232522-1501966653"
+          (chat) => chat.id.user === "<chat user id>"
         );
 
           await this.sendMessage(group.id._serialized,undefined);
