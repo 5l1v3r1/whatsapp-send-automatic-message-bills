@@ -1,6 +1,6 @@
-const {sendAutomaticMessage} = require('./cronjobs');
+const {sendAutomaticMessage} = require('./sendAutomaticMessage');
 const express = require('express');
-class Index {
+class App {
   app;
   constructor(){
     this.app =express();
@@ -12,4 +12,4 @@ class Index {
 }
 
 
-module.exports = new Index().app;
+module.exports = new App().app;

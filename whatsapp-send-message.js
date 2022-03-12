@@ -34,9 +34,12 @@ class WhatsAppSendMessage {
   }
 
   generateQRCode() {
-    this.client.on("qr", (qr) => {
-      qrcode.generate(qr, { small: true });
-    });
+    if(!fs.existsSync(this.PATH_SESSION_FILE)){
+      this.client.on("qr", (qr) => {
+        qrcode.generate(qr, { small: true });
+      });
+    }
+   
   }
 
   authenticateWhatsAppUser() {
@@ -57,13 +60,16 @@ class WhatsAppSendMessage {
           (chat) => chat.id.user === "5511998232522-1501966653"
         );
 
-        await this.client.sendMessage(group.id._serialized, this.message);
+          await this.sendMessage(group.id._serialized,undefined);
       }).catch((err)=>{
         console.log('error: ',err);
       })
-
       console.info("Messaged sended");
     });
+  }
+
+  async sendMessage(groupId, message){
+    await this.client.sendMessage(groupId,message);
   }
 }
 
