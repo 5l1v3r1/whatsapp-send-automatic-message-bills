@@ -60,7 +60,7 @@ class WhatsAppSendMessage {
           (chat) => chat.id.user === "<chat user id>"
         );
 
-          await this.sendMessage(group.id._serialized,undefined);
+          await this.sendMessage(group.id._serialized,this.message);
       }).catch((err)=>{
         console.log('error: ',err);
       })
